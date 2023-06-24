@@ -2,10 +2,13 @@ FILENAME = $(shell date +'%FT%H%M%S')
 
 default:
 
-setup:
+monitor:
 	python patest.py
 
-record3:
+channels:
+	bash unload.sh && bash load.sh
+
+record:
 	ffmpeg \
 		-fflags nobuffer -flags low_delay -strict experimental -async 1 \
 		-thread_queue_size 4096 \
